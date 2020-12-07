@@ -15,9 +15,11 @@ module.exports = {
     // lintOnSave: true,// 是否在保存的时候检查    
     // productionSourceMap: true,// 生产环境是否生成 sourceMap 文件    
   css: {        
-    extract: true,// 是否使用css分离插件 ExtractTextPlugin        
+    //extract: true,// 是否使用css分离插件 ExtractTextPlugin        
     sourceMap: false,// 开启 CSS source maps        
-    loaderOptions: {},// css预设器配置项        
+    loaderOptions: {
+    
+    },// css预设器配置项        
     modules: false// 启用 CSS modules for all css / pre-processor files.    
   },    
   devServer: {// 环境配置        
