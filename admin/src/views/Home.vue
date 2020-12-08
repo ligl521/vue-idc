@@ -1,20 +1,20 @@
 <template>
   <div class="home">
-    14121212121
-    <img alt="Vue logo" src="../assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+    <home-carouserl></home-carouserl>
+   
+   
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from "@/components/HelloWorld.vue";
+import homeCarouserl from "@/components/home/carousel.vue";
+import {postGetrotation} from "@/api/api"
 // import {getCurrentInstance} from "vue"
 
 export default {
   name: "home",
   components: {
-    HelloWorld
+    homeCarouserl
   },
   mounted() {
     // this.axios.post("/index/get_month_list.do",{
@@ -29,11 +29,14 @@ export default {
     // })
     // 先创建一个FormData 对象
     // 将请求参数一个一个append进去，因为涉及到项目内部东西，而且需要安全请求，所以就随便写了几个键值代替
-  
-    this.axios.post('/api/indexApi/getrotation').then((res) => {
-      console.log(res)
-    }).catch();
-   
+    
+
+    postGetrotation({
+
+    }).then(res => {
+      res
+    })
   },
+
 };
 </script>

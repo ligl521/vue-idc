@@ -9,20 +9,18 @@
       </ul>
     </div>
     <div class="header_right">
-      <!-- <div class="header_search">
-        <el-input v-model="input" placeholder="请输入内容"></el-input>
-        <i class="el-icon-search"></i>
-      </div> -->
       <ul>
-        <li class="header_search">
-          <el-input v-model="input" placeholder="请输入内容"></el-input>
-          <i class="el-icon-search"></i>
+        <li>
+          <p class="header_search">
+            <el-input v-model="input" placeholder="请输入内容"></el-input>
+            <i class="el-icon-search"></i>
+          </p>
         </li>
 				<li><a>备案</a></li>
 				<li><a>论坛</a></li>
 				<li><a>管理控制台</a></li>
-        <li>登陆</li>
-        <li>注册</li>
+        <li>登陆 | 注册</li>
+       
       </ul>
     </div>
   </div>
@@ -71,7 +69,7 @@
         ],
         searchText: '',
         secondNav: {},
-        map: {}
+        input:""
       }
     },
   }
@@ -98,16 +96,17 @@
           padding: 0 10px;
         }
       }
-      flex: 7;
+      
     }
     .header_right{
-      flex: 4;
+    
       display: flex;
       .header_search{
+        // display: flex;
         border: 1px SOLID #ccc;
         height: 30px;
         width: 150px;
-        margin-top: 15px;
+        margin-top: 12px;
         line-height: 20px;
         .el-input {
           width: 120px;

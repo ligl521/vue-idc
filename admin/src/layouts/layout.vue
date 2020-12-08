@@ -2,10 +2,12 @@
   <div>
       <home-header></home-header>
       <router-view></router-view>
+      <home-footer></home-footer>
   </div>
 </template>
 <script>
 import HomeHeader from "../components/header"
+import HomeFooter from "../components/Footer/Footer"
 export default{
   name:"home",
   data(){
@@ -14,8 +16,8 @@ export default{
     }
   },
   components:{
-    HomeHeader
-
+    HomeHeader,
+    HomeFooter
   }
 }
 </script>
