@@ -1,7 +1,9 @@
 const path = require('path');
+const PrerenderSPAPlugin = require('prerender-spa-plugin');
+const Renderer = PrerenderSPAPlugin.PuppeteerRenderer;
 module.exports = {   
     publicPath: './',
-    outputDir: '../dist',// 运行时生成的生产环境构建文件的目录(默认''dist''，构建之前会被清除)   
+    outputDir: 'dist',// 运行时生成的生产环境构建文件的目录(默认''dist''，构建之前会被清除)   
     assetsDir: 'static',//放置生成的静态资源(js、css、img、fonts)的(相对于 outputDir 的)目录(默认'')    
     indexPath: 'index.html',//指定生成的 index.html 的输出路径(相对于 outputDir)也可以是一个绝对路径。    
     // pages: {//pages 里配置的路径和文件名在你的文档目录必须存在 否则启动服务会报错        
@@ -44,5 +46,37 @@ module.exports = {
         }    
    },    
   pluginOptions: {// 第三方插件配置        // ...    
+  },
+  configureWebpack: config => {
+    if (process.env.NODE_ENV === 'production') {
+        // 为生产环境修改配置...
+        return {
+            plugins: [
+                // 预渲染配置
+                new PrerenderSPAPlugin({
+                    //要求-给的WebPack-输出应用程序的路径预渲染。
+                    staticDir: path.join(__dirname, 'dist'),
+                    //必需，要渲染的路线。
+　　　　　　　　　　　　// 对应自己的路由文件，比如a有参数，就需要写成 /a/param1。
+                    routes: ['/'],
+                    //必须，要使用的实际渲染器，没有则不能预编译
+                    renderer: new Renderer({
+                        inject: {
+                            foo: 'bar'
+                        },
+                        headless: false, //渲染时显示浏览器窗口。对调试很有用。  
+                        //等待渲染，直到检测到指定元素。
+                        //例如，在项目入口使用`document.dispatchEvent(new Event('custom-render-trigger'))` 
+                        renderAfterDocumentEvent: 'render-event',
+　　　　　　　　　　　　　　renderAfterTime: 5000 //renderAfer 多中条件选一个
+
+                    })
+                })
+            ],
+        }
+    } else {
+        // 为开发环境修改配置...
+        return;
+    }
   }
 };
