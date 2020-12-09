@@ -15,7 +15,7 @@ Vue.use(ElementUI);
 
 axios.defaults.timeout = 5000 // 请求超时
 // axios.defaults.baseURL = 'https://data.xinxueshuo.cn/nsi-1.0/manager/'  // api 即上面 vue.config.js 中配置的地址
-// axios.defaults.baseURL = 'http://cp.jekang.cn/api'  // api 即上面 vue.config.js 中配置的地址
+// axios.defaults.baseURL = 'http://cp.jekang.cn'  // api 即上面 vue.config.js 中配置的地址
 axios.defaults.baseURL = '/api'  // api 即上面 vue.config.js 中配置的地址
 
 Vue.config.productionTip = false;

@@ -1,6 +1,7 @@
 const path = require('path');
 const PrerenderSPAPlugin = require('prerender-spa-plugin');
 const Renderer = PrerenderSPAPlugin.PuppeteerRenderer;
+
 module.exports = {   
     publicPath: './',
     outputDir: 'dist',// 运行时生成的生产环境构建文件的目录(默认''dist''，构建之前会被清除)   
@@ -14,7 +15,7 @@ module.exports = {
     // title: '',// 当使用 title 选项时,在 template 中使用：<title><%= htmlWebpackPlugin.options.title %></title>           
     // chunks: [] // 在这个页面中包含的块，默认情况下会包含,提取出来的通用 chunk 和 vendor chunk        },        
     // subpage: ''//官方解释：当使用只有入口的字符串格式时,模板会被推导为'public/subpage.html',若找不到就回退到'public/index.html',输出文件名会被推导为'subpage.html'    },    
-    // lintOnSave: true,// 是否在保存的时候检查    
+    lintOnSave: false,// 是否在保存的时候检查    lintOnSave
     // productionSourceMap: true,// 生产环境是否生成 sourceMap 文件    
   css: {        
     //extract: true,// 是否使用css分离插件 ExtractTextPlugin        
@@ -23,7 +24,9 @@ module.exports = {
     
     },// css预设器配置项        
     modules: false// 启用 CSS modules for all css / pre-processor files.    
-  },    
+    
+  },
+  publicPath:process.env.NODE_ENV=="production"?"./":"/",  //打包配置，解决页面空白的配置方案。
   devServer: {// 环境配置        
         host: 'localhost',        
         port: 8080,        
@@ -32,12 +35,16 @@ module.exports = {
         open: true, //配置自动启动浏览器        
         proxy: {// 配置多个代理(配置一个 proxy: 'http://localhost:4000' )            
             '/api': {                
-                  target: 'http://cp.jekang.cn',     
+                  target: "http://cp.jekang.cn",     
                   // target:"https://data.xinxueshuo.cn/nsi-1.0/manager/",
                   ws: true,                
                   changeOrigin: true,
+                  secure: false,
+                  headers: {                  
+                    Referer: 'http://cp.jekang.cn'
+                  },
                   pathRewrite: {
-                    '^/api': ''
+                    '^/api': '/api'
                   }            
             },            
             '/foo': {                
@@ -46,6 +53,12 @@ module.exports = {
         }    
    },    
   pluginOptions: {// 第三方插件配置        // ...    
+    'style-resources-loader': {
+      preProcessor: 'less',
+      patterns: [
+        path.resolve(__dirname, './src/assets/common/global.less')
+      ]
+    }
   },
   configureWebpack: config => {
     if (process.env.NODE_ENV === 'production') {

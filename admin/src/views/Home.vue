@@ -7,6 +7,7 @@
 </template>
 
 <script>
+console.log("0.0.02")
 import homeCarouserl from "@/components/home/carousel.vue";
 import {postGetrotation} from "@/api/api"
 // import {getCurrentInstance} from "vue"

@@ -1,5 +1,6 @@
-import {post} from './http'
+import {post,get} from './http'
 
-export const postGetrotation = p => post('/api/indexApi/getrotation', p);
+// home轮播图
+export const postGetrotation = p => post('/indexApi/getrotation', p);
 
-
+// export const postGetrotation = p => post('index/get_seven_days_list.do', p);
