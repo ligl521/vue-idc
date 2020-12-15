@@ -1,0 +1,96 @@
+.header {
+  height: 55px;
+  line-height: 55px;
+  font-size: 14px;
+  display: flex;
+  justify-content: space-between;
+}
+.header .header_logo img {
+  height: 45px;
+  display: flex;
+  margin-top: 5px;
+}
+.header .header_left .left_box {
+  display: flex;
+}
+.header .header_left .left_box > div {
+  margin-left: 10px;
+  padding: 0 10px;
+  position: relative;
+}
+.header .header_left .left_box .nav_title {
+  height: 53px;
+}
+.header .header_left .left_box .nav_title:hover {
+  border-bottom: 2px solid #4c78f1;
+}
+.header .header_left .left_box > div:hover {
+  box-sizing: border-box;
+}
+.header .header_left .left_box > div:hover .left_FloatBox {
+  display: block;
+}
+.header .header_left .left_box > div:hover .left_FloatBox:hover {
+  display: block;
+}
+.header .header_left .left_FloatBox {
+  display: none;
+  position: absolute;
+  left: -20px;
+  top: 55px;
+  line-height: 30px;
+  width: max-content;
+  max-width: 600px;
+  z-index: 999999;
+}
+.header .header_left .left_FloatBox ul {
+  background: #ffffff;
+  margin-top: 10px;
+  width: auto;
+  white-space: nowrap;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+.header .header_left .left_FloatBox ul li {
+  padding: 10px;
+  width: 130px;
+}
+.header .header_left .left_FloatBox ul li a {
+  color: #000;
+}
+.header .header_left .left_FloatBox ul li p:nth-child(1) {
+  border-bottom: 2px solid #cccccc;
+  font-size: 16px;
+}
+.header .header_left .left_FloatBox ul li p:nth-child(1) img {
+  width: 16px;
+  margin-top: 3px;
+  vertical-align: middle;
+}
+.header .header_left .left_FloatBox ul li p:nth-child(1) span {
+  margin-left: 8px;
+}
+.header .header_right {
+  display: flex;
+}
+.header .header_right .header_search {
+  border: 1px SOLID #ccc;
+  height: 30px;
+  width: 150px;
+  margin-top: 12px;
+  line-height: 20px;
+}
+.header .header_right .header_search .el-input {
+  width: 120px;
+}
+.header .header_right .header_search .el-input /deep/ input {
+  border: none;
+  height: 30px;
+}
+.header .header_right ul {
+  display: flex;
+}
+.header .header_right ul li {
+  padding: 0 15px;
+}

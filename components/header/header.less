@@ -1,0 +1,110 @@
+.header{
+  height: 55px;
+  line-height: 55px;
+  font-size: 14px;
+  display: flex;
+  justify-content: space-between;
+  .header_logo{
+    img{
+      height: 45px;
+      display: flex;
+      margin-top: 5px;
+    }
+  }
+  .header_left{
+    .left_box{
+      display: flex;
+      &>div{
+        margin-left: 10px;
+        padding: 0 10px;
+        position: relative;
+      }
+      .nav_title{
+        height: 53px;
+      }
+      .nav_title:hover{
+        border-bottom: 2px solid #4c78f1;
+      }
+      &>div:hover{
+        // border: 2px solid red;
+        box-sizing: border-box;
+        .left_FloatBox{
+          display: block; 
+        }
+        .left_FloatBox:hover{
+          display: block;
+        }
+
+      }
+    }
+    .left_FloatBox{
+      display: none;
+      position: absolute;
+      left: -20px;
+      top: 55px;
+      line-height: 30px;
+      width: max-content;
+      max-width: 600px;
+      z-index: 999999;
+      ul {
+        background: #ffffff;
+        margin-top: 10px;
+        width: auto;
+        // min-width: 200px;
+        white-space: nowrap;
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction:row;
+        li{
+          padding: 10px;
+          width: 130px;
+          a{
+            color: #000;
+          }
+          a:hover{
+            // color: cornflowerblue;
+            // color:@theme-color;
+          }
+        }
+        li p:nth-child(1){
+          border-bottom: 2px solid #cccccc;
+          font-size: 16px;
+          img{
+            width: 16px;
+            margin-top: 3px;
+            vertical-align: middle;
+          }
+          span{
+            margin-left: 8px;
+          }
+        }
+      }
+    }
+  }
+  .header_right{
+  
+    display: flex;
+    .header_search{
+      // display: flex;
+      border: 1px SOLID #ccc;
+      height: 30px;
+      width: 150px;
+      margin-top: 12px;
+      line-height: 20px;
+      .el-input {
+        width: 120px;
+      }
+      .el-input /deep/ input{
+        border: none;
+        height: 30px;
+      }
+    }
+    ul{
+      display: flex;
+      li{
+        padding: 0 15px;
+      }
+    }
+  }
+ 
+}
